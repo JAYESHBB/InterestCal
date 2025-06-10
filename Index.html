@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interest Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container my-4">
+  <div class="card shadow rounded-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Interest Calculator</h5>
+    </div>
+    <div class="card-body">
+      <form id="invoiceForm" class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Invoice Date</label>
+          <input type="date" class="form-control" id="invoiceDate" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Term Days</label>
+          <input type="number" class="form-control" id="termDays" required>
+        </div>
+		<!-- Add this block after "Term Days" input -->
+<div class="col-md-3">
+  <label class="form-label">Due Date</label>
+  <input type="date" class="form-control" id="dueDate" readonly>
+</div>
+
+        <div class="col-md-3">
+          <label class="form-label">Interest Rate</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="interestRate" required>
+            <select class="form-select" id="rateType">
+              <option value="monthly">Monthly</option>
+              <option value="annually">Annually</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Invoice Amount</label>
+          <input type="number" class="form-control" id="invoiceAmount" required>
+        </div>
+      </form>
+
+      <hr>
+
+      <div class="d-flex justify-content-between mb-2">
+        <h6>Installments</h6>
+        <button class="btn btn-sm btn-success" onclick="addRow()">+ Add Installment</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center" id="installmentTable">
+          <thead class="table-light">
+            <tr>
+              <th>Receipt Date</th>
+              <th>Overdue by</th>
+              <th>Receipt Amount</th>
+              <th>Interest</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Dynamic rows go here -->
+          </tbody>
+          <tfoot class="table-secondary">
+            <tr>
+              <th colspan="2">Total</th>
+              <th id="totalReceipt">0</th>
+              <th id="totalInterest">0</th>
+              <th></th>
+            </tr>
+            <tr>
+              <th colspan="2">Balance Amount</th>
+              <th colspan="3" id="balanceAmount">0</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="text-end">
+        <button class="btn btn-outline-primary" onclick="shareEmail()">Share via Email</button>
+        <button class="btn btn-outline-danger" onclick="window.print()">Print PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
